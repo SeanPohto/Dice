@@ -5,23 +5,17 @@
  * @Mr. Jaffe
  * @1.0 2017-07-13
  */
-public class DieN
+public class Die6
 {
     /**
      * Contains the current value of the die
      */
     private int value;
-    private int sidesOfDie;
     /**
      * Constructor to do an initial roll to set the first value
      */
-    public DieN(int side) {
-        if (side <= 0) {
-            System.out.println ("No");
-        } else {
-            sidesOfDie = side;
-            this.roll();
-        }
+    public Die6() {
+        this.roll();
     }
 
     /**
@@ -37,7 +31,7 @@ public class DieN
      * Note that roll does NOT return the new value
      */
     public void roll() {
-        this.value = (int)(Math.random() * sidesOfDie) + 1;
+        this.value = (int)(Math.random() * 6) + 1;
     }
 
     /**
