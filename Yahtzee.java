@@ -1,72 +1,59 @@
 
 public class Yahtzee
 {
-    Die6 dieA;
-    Die6 dieB;
-    Die6 dieC;
-    Die6 dieD;
-    Die6 dieE;
-    int number;
+    Die6 die1;
+    Die6 die2;
+    Die6 die3;
+    Die6 die4;
+    Die6 die5;
+    int[] dieSet = {die1, die2, die3, die4, die5};
     public Yahtzee() {
-        dieA = new Die6();
-        dieB = new Die6();
-        dieC = new Die6();
-        dieD = new Die6();
-        dieE = new Die6();
+        die1 = new Die6();
+        die2 = new Die6();
+        die3 = new Die6();
+        die4 = new Die6();
+        die5 = new Die6();
     }
 
-    public void roll() {
-        dieA.roll();
-        dieB.roll();
-        dieC.roll();
-        dieD.roll();
-        dieE.roll();
+    public void allRoll() {
+        die1.roll();
+        die2.roll();
+        die3.roll();
+        die4.roll();
+        die5.roll();
     }
 
     public void roll(int dieNumber) {
         if (dieNumber == 1) {
-            dieA.roll();
+            die1.roll();
         } else if (dieNumber == 2) {
-            dieB.roll();
+            die2.roll();
         } else if (dieNumber == 3) {
-            dieC.roll(); 
+            die3.roll(); 
         } else if (dieNumber == 4) {
-            dieD.roll();
+            die4.roll();
         } else if (dieNumber == 5) {
-            dieE.roll();
+            die5.roll();
         }
     }
-
-    public int getValue1() {
-        return dieA.getValue();
-    }
-    public int getValue2() {
-        return dieB.getValue();
-    }
-    public int getValue3() {
-        return dieC.getValue();
-    }
-    public int getValue4() {
-        return dieD.getValue();
-    }
-    public int getValue5() {
-        return dieE.getValue();
-    }
-
     public int rollAndGetValue() {
-        roll();
+        allRoll();
         return getValue1();
     }
 
     public String summarize() {
-        if (number >= 1 || number <=6) {
-            return "1" + "-" + number + ";" + "2" + "-" + number + ";" + "3" + "-" + number + ";" + "4" + "-" + number + ";" + "1" + "-" + number;
-        } else {
-            return "bruh";
+        int[] sideArray = {1, 2, 3, 4, 5, 6};
+        int[] dieCount = {0, 0, 0, 0, 0, 0};
+        for (int x = 0; x < 5; x++){
+            for (int y = 0; y < 5; y++) {
+                if (dieSet[x].getValue() == sideArray[y]) {
+                    dieCount[y] = dieCount[y]++;
+                }
+            }
         }
     }
 
     public String ToString() {
-        return "Dice values: " + dieA.getValue() + " " + dieB.getValue() + " " + dieC.getValue() + " " + dieD.getValue() + " " + dieE.getValue();
+        return "Dice values: " + die1.getValue() + " " + die2.getValue() + " " + die3.getValue() + " " + die4.getValue() + " " + die5.getValue();
     }
 }
